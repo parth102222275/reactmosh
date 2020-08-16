@@ -1,12 +1,27 @@
 import React, { Component } from "react";
 class Counter extends Component {
+  state = {
+    count: 0,
+  };
+
+  styles = {
+    fontSize: 20,
+    fontWeight: "bold",
+  };
   render() {
     return (
       <div>
-        <h1> Hello World </h1>
-        <button>Increament</button>
+        <span style={this.styles} className="badge badge-primary m-2">
+          {" "}
+          {this.ChangeCount()}{" "}
+        </span>
+        <button className="btn btn-secondary btn-sm">Increament</button>
       </div>
     );
+  }
+
+  ChangeCount() {
+    return this.state.count === 0 ? "zero" : this.state.count;
   }
 }
 
