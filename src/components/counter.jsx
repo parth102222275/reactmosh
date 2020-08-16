@@ -9,6 +9,7 @@ class Counter extends Component {
     fontSize: 20,
     fontWeight: "bold",
   };
+
   render() {
     return (
       <div>
@@ -16,16 +17,34 @@ class Counter extends Component {
           {" "}
           {this.ChangeCount()}{" "}
         </span>
-        <button className="btn btn-secondary btn-sm">Increament</button>
+        <button
+          onClick={this.handleincreament}
+          className="btn btn-secondary btn-sm m-2"
+        >
+          Increament
+        </button>
+        <button
+          onClick={this.handlereset}
+          className="btn btn-secondary btn-sm "
+        >
+          {" "}
+          reset
+        </button>
         <ul>
           {" "}
           {this.state.tags.map((tag) => (
-            <li>{tag}</li>
+            <li key={tag}>{tag}</li>
           ))}
         </ul>
       </div>
     );
   }
+  handlereset = () => {
+    this.setState({ count: (this.state.count = 0) });
+  };
+  handleincreament = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
   getbadgeClass() {
     let classes = "badge m-2 badge-";
     classes += this.state.count === 0 ? "warning" : "primary";
